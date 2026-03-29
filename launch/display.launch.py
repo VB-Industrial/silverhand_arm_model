@@ -13,6 +13,7 @@ def _is_true(value):
 
 def _launch_setup(context, *args, **kwargs):
     model_path = LaunchConfiguration("model").perform(context)
+    arm_color = LaunchConfiguration("arm_color").perform(context)
     use_joint_state_gui = LaunchConfiguration("use_joint_state_gui").perform(context)
     use_rviz = LaunchConfiguration("use_rviz").perform(context)
     rviz_config = PathJoinSubstitution(
@@ -21,7 +22,7 @@ def _launch_setup(context, *args, **kwargs):
     xacro_executable = FindExecutable(name="xacro").perform(context)
 
     urdf_content = subprocess.check_output(
-        [xacro_executable, model_path],
+        [xacro_executable, model_path, f"arm_color:={arm_color}"],
         text=True,
     )
     robot_description = {"robot_description": urdf_content}
@@ -91,6 +92,11 @@ def generate_launch_description():
                 "model",
                 default_value=default_model_path,
                 description="Absolute path to the robot xacro file.",
+            ),
+            DeclareLaunchArgument(
+                "arm_color",
+                default_value="0.80 0.80 0.82 1",
+                description="RGBA color for the arm visuals.",
             ),
             DeclareLaunchArgument(
                 "use_joint_state_gui",
