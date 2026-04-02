@@ -104,7 +104,7 @@
     </link>
 
     <joint name="${prefix}joint_2" type="continuous">
-      <origin xyz="0 0.064146 -0.16608" rpy="1.5708 0.5236 -1.5708"/>
+      <origin xyz="0 0.064146 -0.16608" rpy="1.5708 -1.0472 -1.5708"/>
       <parent link="${prefix}link_1"/>
       <child link="${prefix}link_2"/>
       <axis xyz="0 0 -1"/>
@@ -140,7 +140,7 @@
     </link>
 
     <joint name="${prefix}joint_3" type="continuous">
-      <origin xyz="0.1525 -0.26414 0" rpy="0 0 -1.0708"/>
+      <origin xyz="0.1525 -0.26414 0" rpy="0 0 2.0708"/>
       <parent link="${prefix}link_2"/>
       <child link="${prefix}link_3"/>
       <axis xyz="0 0 -1"/>
@@ -212,7 +212,7 @@
     </link>
 
     <joint name="${prefix}joint_5" type="continuous">
-      <origin xyz="0 0 -0.22225" rpy="3.1416 0 -2.8262"/>
+      <origin xyz="0 0 -0.22225" rpy="1.5708 0 -2.8262"/>
       <parent link="${prefix}link_4"/>
       <child link="${prefix}link_5"/>
       <axis xyz="-1 0 0"/>
@@ -248,7 +248,7 @@
     </link>
 
     <joint name="${prefix}joint_6" type="continuous">
-      <origin xyz="-0.000294 0 0.02117" rpy="0 0 3.1416"/>
+      <origin xyz="-0.000294 0 0.02117" rpy="0 0 -1.5708"/>
       <parent link="${prefix}link_5"/>
       <child link="${prefix}link_6"/>
       <axis xyz="0 0 1"/>
