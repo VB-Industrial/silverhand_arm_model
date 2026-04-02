@@ -83,7 +83,7 @@ def _launch_setup(context, *args, **kwargs):
 
 def generate_launch_description():
     default_model_path = PathJoinSubstitution(
-        [FindPackageShare("silverhand_arm_model"), "urdf", "silverhand.urdf.xacro"]
+        [FindPackageShare("silverhand_arm_model"), "urdf", "silverhand_arm.urdf.xacro"]
     )
 
     return LaunchDescription(
