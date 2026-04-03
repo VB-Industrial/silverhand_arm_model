@@ -79,7 +79,7 @@
       <origin xyz="0 0 0.003445" rpy="3.1416 0 0"/>
       <parent link="${prefix}arm_root_link"/>
       <child link="${prefix}link_1"/>
-      <axis xyz="0 0 1"/>
+      <axis xyz="0 0 -1"/>
     </joint>
 
     <link name="${prefix}link_2">
@@ -223,7 +223,7 @@
       <origin xyz="0 0 -0.22225" rpy="1.5708 0 -2.8262"/>
       <parent link="${prefix}link_4"/>
       <child link="${prefix}link_5"/>
-      <axis xyz="-1 0 0"/>
+      <axis xyz="1 0 0"/>
     </joint>
 
     <link name="${prefix}link_6">

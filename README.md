@@ -8,3 +8,5 @@ Pure Silverhand arm model package for RViz visualization.
 - `meshes/` - STL meshes
 - `launch/display.launch.py` - RViz and state publisher launch
 - `rviz/silverhand_arm.rviz` - default RViz configuration
+
+ros2 launch silverhand_arm_model display.launch.py use_joint_state_gui:=true
