@@ -5,7 +5,7 @@
 
     <link name="${prefix}arm_root_link">
       <inertial>
-        <origin xyz="-4.6941E-06 0.054174 0.038824" rpy="0 0 0"/>
+        <origin xyz="0 0.054174 0.038824" rpy="0 0 0"/>
         <mass value="0.7102"/>
         <inertia
           ixx="0.0039943"
@@ -76,7 +76,7 @@
     </link>
 
     <joint name="${prefix}joint_1" type="continuous">
-      <origin xyz="0 0 0.003445" rpy="3.1416 0 0"/>
+      <origin xyz="0 0 0" rpy="3.1416 0 0"/>
       <parent link="${prefix}arm_root_link"/>
       <child link="${prefix}link_1"/>
       <axis xyz="0 0 -1"/>
@@ -120,7 +120,7 @@
 
     <link name="${prefix}link_3">
       <inertial>
-        <origin xyz="-0.00029765 -0.023661 -1.04720367321" rpy="0 0 0"/>
+        <origin xyz="0 -0.023661 -0.04720367321" rpy="0 0 0"/>
         <mass value="0.1787"/>
         <inertia
           ixx="0.0001685"
@@ -156,7 +156,7 @@
 
     <link name="${prefix}link_4">
       <inertial>
-        <origin xyz="-0.0016798 -0.00057319 -0.074404" rpy="0 0 0"/>
+        <origin xyz="0 0 -0.074404" rpy="0 0 0"/>
         <mass value="0.34936"/>
         <inertia
           ixx="0.0030532"
@@ -192,7 +192,7 @@
 
     <link name="${prefix}link_5">
       <inertial>
-        <origin xyz="0.0015066 -1.3102E-05 -0.012585" rpy="0 0 0"/>
+        <origin xyz="0.0015066 0 -0.012585" rpy="0 0 0"/>
         <mass value="0.11562"/>
         <inertia
           ixx="5.5035E-05"
@@ -228,7 +228,7 @@
 
     <link name="${prefix}link_6">
       <inertial>
-        <origin xyz="2.9287E-10 -1.6472E-09 0.0091432" rpy="0 0 0"/>
+        <origin xyz="0 0 0.01" rpy="0 0 0"/>
         <mass value="0.013863"/>
         <inertia
           ixx="1.3596E-06"
@@ -256,7 +256,7 @@
     </link>
 
     <joint name="${prefix}joint_6" type="continuous">
-      <origin xyz="-0.000294 0 0.02117" rpy="0 0 -1.5708"/>
+      <origin xyz="0 0 0.02117" rpy="0 0 -1.5708"/>
       <parent link="${prefix}link_5"/>
       <child link="${prefix}link_6"/>
       <axis xyz="0 0 1"/>
