@@ -1,9 +1,18 @@
 <?xml version="1.0"?>
 <robot name="silverhand_arm_macro" xmlns:xacro="http://www.ros.org/wiki/xacro">
-  <xacro:macro name="silverhand_arm" params="prefix parent:='' xyz:='0 0 0' rpy:='0 0 0' color:='0.80 0.80 0.82 1'">
-    <link name="${prefix}base_link"/>
+  <xacro:macro
+    name="silverhand_arm"
+    params="prefix:='' joint_prefix:='__default__' link_prefix:='__default__' parent:='' xyz:='0 0 0' rpy:='0 0 0' color:='0.80 0.80 0.82 1'">
+    <xacro:property
+      name="resolved_joint_prefix"
+      value="${prefix if joint_prefix == '__default__' else joint_prefix}"/>
+    <xacro:property
+      name="resolved_link_prefix"
+      value="${prefix if link_prefix == '__default__' else link_prefix}"/>
 
-    <link name="${prefix}arm_root_link">
+    <link name="${resolved_link_prefix}base_link"/>
+
+    <link name="${resolved_link_prefix}arm_root_link">
       <inertial>
         <origin xyz="0 0.054174 0.038824" rpy="0 0 0"/>
         <mass value="0.7102"/>
@@ -33,20 +42,20 @@
     </link>
 
     <xacro:if value="${parent != ''}">
-      <joint name="${prefix}mount_joint" type="fixed">
+      <joint name="${resolved_joint_prefix}mount_joint" type="fixed">
         <origin xyz="${xyz}" rpy="${rpy}"/>
         <parent link="${parent}"/>
-        <child link="${prefix}base_link"/>
+        <child link="${resolved_link_prefix}base_link"/>
       </joint>
     </xacro:if>
 
-    <joint name="${prefix}arm_root_joint" type="fixed">
+    <joint name="${resolved_joint_prefix}arm_root_joint" type="fixed">
       <origin xyz="0 0 0" rpy="0 0 1.5708"/>
-      <parent link="${prefix}base_link"/>
-      <child link="${prefix}arm_root_link"/>
+      <parent link="${resolved_link_prefix}base_link"/>
+      <child link="${resolved_link_prefix}arm_root_link"/>
     </joint>
 
-    <link name="${prefix}link_1">
+    <link name="${resolved_link_prefix}link_1">
       <inertial>
         <origin xyz="-0.022706 0.04294 -0.12205" rpy="0 0 0"/>
         <mass value="0.88065"/>
@@ -75,14 +84,14 @@
       </collision>
     </link>
 
-    <joint name="${prefix}joint_1" type="continuous">
+    <joint name="${resolved_joint_prefix}joint_1" type="continuous">
       <origin xyz="0 0 0" rpy="3.1416 0 0"/>
-      <parent link="${prefix}arm_root_link"/>
-      <child link="${prefix}link_1"/>
+      <parent link="${resolved_link_prefix}arm_root_link"/>
+      <child link="${resolved_link_prefix}link_1"/>
       <axis xyz="0 0 -1"/>
     </joint>
 
-    <link name="${prefix}link_2">
+    <link name="${resolved_link_prefix}link_2">
       <inertial>
         <origin xyz="0.064818 -0.11189 -0.038671" rpy="0 0 0"/>
         <mass value="0.57738"/>
@@ -111,14 +120,14 @@
       </collision>
     </link>
 
-    <joint name="${prefix}joint_2" type="continuous">
+    <joint name="${resolved_joint_prefix}joint_2" type="continuous">
       <origin xyz="0 0.064146 -0.16608" rpy="1.5708 -1.0472 -1.5708"/>
-      <parent link="${prefix}link_1"/>
-      <child link="${prefix}link_2"/>
+      <parent link="${resolved_link_prefix}link_1"/>
+      <child link="${resolved_link_prefix}link_2"/>
       <axis xyz="0 0 -1"/>
     </joint>
 
-    <link name="${prefix}link_3">
+    <link name="${resolved_link_prefix}link_3">
       <inertial>
         <origin xyz="0 -0.023661 -0.04720367321" rpy="0 0 0"/>
         <mass value="0.1787"/>
@@ -147,14 +156,14 @@
       </collision>
     </link>
 
-    <joint name="${prefix}joint_3" type="continuous">
+    <joint name="${resolved_joint_prefix}joint_3" type="continuous">
       <origin xyz="0.1525 -0.26414 0" rpy="0 0 2.0708"/>
-      <parent link="${prefix}link_2"/>
-      <child link="${prefix}link_3"/>
+      <parent link="${resolved_link_prefix}link_2"/>
+      <child link="${resolved_link_prefix}link_3"/>
       <axis xyz="0 0 -1"/>
     </joint>
 
-    <link name="${prefix}link_4">
+    <link name="${resolved_link_prefix}link_4">
       <inertial>
         <origin xyz="0 0 -0.074404" rpy="0 0 0"/>
         <mass value="0.34936"/>
@@ -183,14 +192,14 @@
       </collision>
     </link>
 
-    <joint name="${prefix}joint_4" type="continuous">
+    <joint name="${resolved_joint_prefix}joint_4" type="continuous">
       <origin xyz="0 0 0.00675" rpy="1.5708 -1.2554 -1.5708"/>
-      <parent link="${prefix}link_3"/>
-      <child link="${prefix}link_4"/>
+      <parent link="${resolved_link_prefix}link_3"/>
+      <child link="${resolved_link_prefix}link_4"/>
       <axis xyz="0 0 -1"/>
     </joint>
 
-    <link name="${prefix}link_5">
+    <link name="${resolved_link_prefix}link_5">
       <inertial>
         <origin xyz="0.0015066 0 -0.012585" rpy="0 0 0"/>
         <mass value="0.11562"/>
@@ -219,14 +228,14 @@
       </collision>
     </link>
 
-    <joint name="${prefix}joint_5" type="continuous">
+    <joint name="${resolved_joint_prefix}joint_5" type="continuous">
       <origin xyz="0 0 -0.22225" rpy="1.5708 0 -2.8262"/>
-      <parent link="${prefix}link_4"/>
-      <child link="${prefix}link_5"/>
+      <parent link="${resolved_link_prefix}link_4"/>
+      <child link="${resolved_link_prefix}link_5"/>
       <axis xyz="1 0 0"/>
     </joint>
 
-    <link name="${prefix}link_6">
+    <link name="${resolved_link_prefix}link_6">
       <inertial>
         <origin xyz="0 0 0.01" rpy="0 0 0"/>
         <mass value="0.013863"/>
@@ -255,10 +264,10 @@
       </collision>
     </link>
 
-    <joint name="${prefix}joint_6" type="continuous">
+    <joint name="${resolved_joint_prefix}joint_6" type="continuous">
       <origin xyz="0 0 0.02117" rpy="0 0 -1.5708"/>
-      <parent link="${prefix}link_5"/>
-      <child link="${prefix}link_6"/>
+      <parent link="${resolved_link_prefix}link_5"/>
+      <child link="${resolved_link_prefix}link_6"/>
       <axis xyz="0 0 1"/>
     </joint>
   </xacro:macro>
