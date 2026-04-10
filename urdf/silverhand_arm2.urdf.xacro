@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="silverhand">
+  <xacro:arg name="arm_color" default="0.80 0.80 0.82 1"/>
+
+  <!-- Top-level wrapper that uses the updated macro (silverhand_macro2) which maps
+       the additional meshes (big-arm-covers, j4-el-tcover, j5-cover) to the arm. -->
+  <xacro:include filename="$(find silverhand_arm_model)/urdf/silverhand_macro2.urdf.xacro"/>
+  <xacro:silverhand_arm prefix="" color="$(arg arm_color)"/>
+</robot>
