@@ -1,18 +1,18 @@
 # silverhand_arm_model
 
-Pure Silverhand arm model package for RViz visualization.
+Чистый пакет модели руки SilverHand для визуализации в RViz.
 
-## What Is Inside
+## Что внутри
 
-- `urdf/silverhand_arm.urdf.xacro` - top-level arm xacro
-- `urdf/silverhand_macro.urdf.xacro` - reusable arm macro
-- `meshes/` - STL meshes
-- `launch/display.launch.py` - RViz and state publisher launch
-- `rviz/silverhand_arm.rviz` - default RViz configuration
+- `urdf/silverhand_arm.urdf.xacro` - верхнеуровневый xacro для руки
+- `urdf/silverhand_macro.urdf.xacro` - переиспользуемый макрос руки
+- `meshes/` - STL-меши
+- `launch/display.launch.py` - запуск RViz и state publisher
+- `rviz/silverhand_arm.rviz` - конфигурация RViz по умолчанию
 
-The package installs only xacro sources; generated `*.urdf` files are not tracked or installed.
+Пакет устанавливает только xacro-исходники; сгенерированные `*.urdf` файлы не отслеживаются и не устанавливаются.
 
-Run the standalone arm view with:
+Запустить отдельный просмотр руки можно так:
 
 ```bash
 ros2 launch silverhand_arm_model display.launch.py use_joint_state_gui:=true
